@@ -18,16 +18,26 @@ def get_gemini_response(question):
 
 # Initialize our streamlit app
 
-st.set_page_config(page_title="Q&A Demo")
+st.set_page_config(page_title="GenAI Q&A")
+st.header("Gemini LLM(Q&A) Demo App : ")
 
-st.header("Gemini LLM Application")
+# Input field for the user's question
+question = st.text_input("Enter your question:")
 
-input = st.text_input("Input: ", key="input")
+submit  = st.button("Submit")
 
-submit  = st.button("Ask the queston")
+
+# Placeholder for the answer
+answer_placeholder = st.empty()
+
 
 # when submit is clicked
-
 if submit:
-    response = get_gemini_response(input)
-    st.write(response)
+    if question:
+        # Placeholder logic for generating an answer (Replace with your GenAI model logic)
+        answer = get_gemini_response(question)
+        
+        # Display the answer
+        answer_placeholder.write(f"**Answer:** {answer}")
+    else:
+        answer_placeholder.warning("Please enter a question.")
