@@ -19,7 +19,7 @@ def get_gemini_response(question):
 # Initialize our streamlit app
 
 st.set_page_config(page_title="GenAI Q&A")
-st.header("Gemini LLM(Q&A) Demo App : ")
+st.header("LLM(Q&A) Demo App : ")
 
 # Input field for the user's question
 question = st.text_input("Enter your question:")

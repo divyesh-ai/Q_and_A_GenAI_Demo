@@ -22,11 +22,12 @@ def get_gemini_response(input, image):
 
 # Initialize our streamlit app
 
-st.set_page_config(page_title="Gemini Image Demo")
+st.set_page_config(page_title="GenAI Image Description: ")
 
-st.header("Gemini Application")
+st.header("Image Description Generator Demo App : ")
 
-input = st.text_input("Input  prompt: ", key="input")
+# Input field for the user's question
+question = st.text_input("Please Add some information Related to image if you want OR Skip :")
 
 # Add a file uploader to allow the user to upload an image
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
@@ -40,11 +41,20 @@ if uploaded_file is not None:
     # Display the image
     st.image(image, caption='Uploaded Image.', use_column_width=True)
 
-submit  = st.button("Tell me about the image")
+submit  = st.button("Tell me about the image...")
+
+
+# Placeholder for the answer
+answer_placeholder = st.empty()
+
 
 # when submit is clicked
-
 if submit:
-    response = get_gemini_response(input, image)
-    st.subheader("The Response is")
-    st.write(response)
+    if question:
+        # Placeholder logic for generating an answer (Replace with your GenAI model logic)
+        answer = get_gemini_response(question, image)
+        
+        # Display the answer
+        answer_placeholder.write(f"**Answer:** {answer}")
+    else:
+        answer_placeholder.warning("Please upload a image.")
